@@ -13,8 +13,8 @@ def countSwaps(a):
             if a[j] > a[j+1]:
                 count = count + 1
                 a[j], a[j+1] = a[j+1], a[j]
-    message = "Array is sorted in {} swaps."
-    print(message.format(count))
+    txt = "Array is sorted in {} swaps."
+    print(txt.format(count))
     firstElement = "First Element: {}"
     print (firstElement.format(a[0]))
     lastElement = "Last Element: {}"

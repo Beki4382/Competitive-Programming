@@ -7,4 +7,4 @@ class Solution(object):
                 new[-1] = [min(new[-1][0], intervals[i][0]), max(new[-1][1], intervals[i][1])]            
             else:
                 new.append(intervals[i])
-        return new 
+        return new

@@ -1,11 +1,9 @@
 class Solution(object):
     def longestOnes(self, nums, k):
-        n = len(nums)
-        l = 0
-        r = 0
+        l,r = 0, 0
         max_len = 0
         
-        while r < n:
+        while r < len(nums):
             if nums[r] == 0:
                 k -=1
 

@@ -1,28 +1,18 @@
 class Solution(object):
     def largestNumber(self, nums):
-#         strNums = [str(nums) for num in nums]
-#         for i in range(len(nums)):
-#             for j in range(i+1, len(nums)-1):
-#                 if strNums[j]+strNums[i] > strNums[i]+strNums[j]:
-#                     strNums[i] = strNums[j]
-#                 else:
-#                     continue
-#         return strNums
+        n=len(nums)
+        for i, num in enumerate(nums):
+            nums[i] = str(num)
+        for i in range(n):
+            j= i+1
+            for j in range(n-1):
+                if nums[j]+nums[i] < nums[i]+nums[j]:
+                    nums[i], nums[j] = nums[j], nums[i]
+        return str(int("".join(nums)))
                     
                     
             
         
         
         
-        
-        strNums = [str(num) for num in nums]
-        for i in range(len(nums)):
-            starting = i
-            j = i+1
-            for j in range(len(nums)-1):
-                if strNums[j]+strNums[i] < strNums[i]+strNums[j]:
-                    strNums[i],strNums[j] = strNums[j], strNums[i]
-                
-                    
-        return str(int("".join(strNums)))
-       
+ 

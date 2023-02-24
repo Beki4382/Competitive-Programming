@@ -1,22 +1,22 @@
 class DataStream:
 
     def __init__(self, value: int, k: int):
+        self.count = 0 
         self.value = value
         self.k = k
-        self.count = 0
-       
-        
         
     def consec(self, num: int) -> bool:
-        
-        if num == self.value:
+        if self.value == num:
             self.count += 1
-            if self.count == self.k:
-                self.count -= 1
-                return True
-                
         else:
             self.count = 0
-            return False
+            
         
+        if self.k <= self.count:
+            return True
+        return False
+        
+            
+        
+       
         

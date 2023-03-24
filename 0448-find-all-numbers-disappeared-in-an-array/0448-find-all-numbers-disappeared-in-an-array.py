@@ -8,12 +8,9 @@ class Solution:
                 nums[i], nums[temp] = nums[temp], nums[i]
             i += 1
     
-        ans = []
-        for i in range(len(nums)):
-            if nums[i] != i + 1:
-                ans.append(i + 1)
+        ans = [i+1 for i in range(len(nums)) if nums[i] != i + 1]
+       
         return ans
-        
                 
                 
                 

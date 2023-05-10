@@ -12,9 +12,6 @@ class Solution:
             heapq.heappush(heap, val)
             
             k -= 1
+        
             
-        res = 0
-        while heap:
-            res += -1 * (heapq.heappop(heap))
-            
-        return res
+        return -sum(heap)

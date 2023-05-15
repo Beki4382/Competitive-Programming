@@ -2,26 +2,28 @@ class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
         
         n=len(graph)
+        visited = set()
         status=[0]*(n)
         res=[]
-        
-        def dfs(i):
-            
-            if status[i]=="visited": 
-                return True
-            if status[i]=="safe":
+        def dfs(node):
+            if node in visited:
                 return False
-            status[i]="visited" 
-            for j in graph[i]:
-                if  dfs(j):
-                    return True
-            status[i]="safe" 
-            return False 
-       
-    
-        for i in range(n):
-            if not dfs(i): 
+            
+            if graph[node] == []:
+                return True
+            
+            visited.add(node)
+            
+            for adj in graph[node]:
+                if not dfs(adj):
+                    return False
+                
+            visited.remove(node)
+            graph[node] = []
+            return True
+        
+        for i in range(len(graph)):
+            if dfs(i):
                 res.append(i)
         return res
-        
         

@@ -1,26 +1,32 @@
 class Solution:
-    def restoreArray(self, adjacentPairs: List[List[int]]) -> List[int]:
+    def restoreArray(self, adjs: List[List[int]]) -> List[int]:
         d = defaultdict(list)
+        indegree = defaultdict(int)
+        for i, j in adjs:
+            d[i].append(j)
+            d[j].append(i)
+            indegree[i] += 1
+            indegree[j] += 1
+            
+        que = deque()
+        visited = set()
+        for val in d:
+            if len(d[val]) == 1:
+                que.append(val)
+                break
+         
+        ans = []
+        while que:
+            num = que.popleft()
+            
+            visited.add(num)
+            ans.append(num)
+            for child in d[num]:
+                if child not in visited:
+                        que.append(child)
+                
+                    
+            
+        return ans
         
-        for adj in adjacentPairs:
-            d[adj[0]].append(adj[1])
-            d[adj[1]].append(adj[0])
-        
-        def find_first(dic) -> int:
-            for i in dic:
-                if len(dic[i]) == 1:
-                    return i
-        
-        first = find_first(d)
-        res = [first]
-        visited = {first}
-        stack = [d[first]]
-        while stack:
-            cur = stack.pop()
-            for adj in cur:
-                if adj not in visited:
-                    stack.append(d[adj])
-                    visited.add(adj)
-                    res.append(adj)
-        return res
         

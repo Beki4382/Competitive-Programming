@@ -6,7 +6,7 @@ class Solution:
         
         n = len(nums)
         mn = float('inf')
-        left = min(n, 3)
+        left = 3
         right = n-1
         while left <= right and left >= 0:
             mn = min(mn, nums[right]-nums[left])

@@ -1,24 +1,14 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        d = {}
+        d = [float("inf")] * (amount + 1)
+        d[0] = 0
         
-        def dp(curr_amount):
-            min_cost = float("inf")
-            
-            if curr_amount == 0:
-                return 0
-            if curr_amount < 0:
-                return float("inf")
-            
-            if curr_amount in d:
-                return d[curr_amount]
-            
+        for i in range(amount + 1):
             for coin in coins:
-                min_cost = min(min_cost, dp(curr_amount - coin) + 1)
-            d[curr_amount] = min_cost
-                
-            return d[curr_amount]
-                
-        return dp(amount) if dp(amount) != float('inf') else -1
-            
+                if i - coin >= 0:
+                    d[i] = min(d[i], d[i - coin] + 1)
+                    
+        
+        return d[amount] if d[amount] != float('inf') else -1
+        
         

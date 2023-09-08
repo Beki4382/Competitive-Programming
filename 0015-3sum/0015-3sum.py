@@ -1,10 +1,9 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        nums.sort()
         
         output = []
-    
-        #fix one number and find the other two numbers.
+        nums.sort()
+        
         for i, num in enumerate(nums):
             if i > 0 and num == nums[i-1]:
                 continue

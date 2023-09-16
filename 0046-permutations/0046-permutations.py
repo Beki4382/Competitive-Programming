@@ -1,18 +1,24 @@
 class Solution:
     def permute(self, arr: List[int]) -> List[List[int]]:
+        res = []
         
-        ans  = []
-        def bt(res,check) :
-            if len(res) == len(arr) :
-                ans.append(res[:])
-                return
+        def dfs(ans, seen):
+            if len(ans) == len(arr):
+                res.append(ans[:])
+                return 
             
-            for i in arr :
-                if i not in check :
-                    check.add(i)
-                    res.append(i)
-                    bt(res,check)
-                    res.remove(i)
-                    check.remove(i)
-        bt([],set())
-        return ans
+            for i in arr:
+                if i not in seen:
+                    ans.append(i)
+                    seen.add(i)
+                    dfs(ans, seen)
+                    ans.remove(i)
+                    seen.remove(i)
+                    
+        dfs([],set())
+        return res
+                    
+                    
+        
+        
+    

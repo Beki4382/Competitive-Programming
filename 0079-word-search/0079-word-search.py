@@ -15,13 +15,13 @@ class Solution:
                 return False
 
             temp = board[i][j]
-            board[i][j] = '#'  # Mark the cell as visited
+            board[i][j] = '#'  
 
             for r, c in neighbor:
                 if bt(i + r, j + c, idx + 1):
                     return True
 
-            board[i][j] = temp  # Restore the cell
+            board[i][j] = temp  
 
             return False
 

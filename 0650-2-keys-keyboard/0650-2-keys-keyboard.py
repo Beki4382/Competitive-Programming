@@ -1,16 +1,19 @@
 class Solution:
     def minSteps(self, n: int) -> int:
-        if n == 1:
-            return 0
-        
         factors = []
         i = 2
-        while i * i <= n:
-            while n % i == 0:
-                factors.append(i)
+        while i*i <= n:
+            if n % i:
+                i += 1
+            else:
                 n //= i
-            i += 1
+                factors.append(i)
         if n > 1:
             factors.append(n)
-        
         return sum(factors)
+
+        
+            
+            
+        
+        

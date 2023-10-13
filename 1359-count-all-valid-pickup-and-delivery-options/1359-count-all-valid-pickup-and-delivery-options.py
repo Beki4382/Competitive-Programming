@@ -3,7 +3,12 @@ class Solution:
         
         MOD = 10**9 + 7
         
-        answer = 1 
-        for i in range(2, n + 1):
-            answer = (answer* (2 * i - 1) * i) % MOD
-        return answer
+        output = 1
+
+        for i in range(2, n+1):
+            val = 2 * i
+            output *= (val * (val-1)// 2) 
+            
+        return output % MOD
+            
+     
